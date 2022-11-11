@@ -1,5 +1,6 @@
 body {
   /* background-color: grey; */
+  background-color: var(--light-grayish-violet);
 }
 :root {
   --light-grayish-violet: hsl(270, 3%, 87%);
@@ -11,6 +12,7 @@ body {
   width: 375px;
   margin: 0 auto;
   min-height: 100vh;
+  background-color: white;
   /* background-color: grey; */
   display: flex;
   flex-direction: column;
@@ -21,9 +23,9 @@ body {
 }
 
 .form-container {
-  /* background-color: gray; */
   height: 100;
   min-height: 450px;
+  padding: 18px;
 }
 
 .mobile-image {
@@ -182,13 +184,32 @@ label {
   text-transform: uppercase;
 }
 
-input::placeholder {
+input[type="text"]::placeholder {
   color: var(--light-grayish-violet)
 }
 
-input {
+input[type="text"] {
   border: 1px solid var(--light-grayish-violet);
   border-radius: 4px;
   height: 44px;
   padding-left: 12px;
+}
+
+
+
+ 
+.submit-btn {
+  background-color: var(--very-dark-violet);
+  color: white;
+  /* padding: 8px 18px; */
+  /* left: 18px; */
+  height: 44px;
+  border-radius: 4px;
+  border: 0px;
+  width: 100%;
+  cursor: pointer;  
+} 
+
+.submit-btn:hover {
+  background-color: lightslategray;
 }

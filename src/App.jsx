@@ -79,7 +79,7 @@ function App() {
                 <input type="text" name="CCV" id="ccv" />
               </div>
             </div>
-            <input type="button" value="Confirm" />
+            <input type="button" value="Confirm" className="submit-btn"/>
           </form>
         </div>
       </div>
