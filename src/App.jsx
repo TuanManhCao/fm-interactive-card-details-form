@@ -9,6 +9,7 @@ import card_logo from "./assets/card-logo.svg"
 function App() {
   return (
     <>
+    
       <div className="cards-wrapper">
         <div className="card-back">
           <img src={card_back_bg} alt="" className="card-back-bg" />
@@ -18,10 +19,10 @@ function App() {
           <img src={card_front_bg} alt="" className="card-front-bg" />
           <img src={card_logo} alt="" className="logo" />
           <div className="card-number-group">
-            <span className="card-number">0000</span>
-            <span className="card-number">0000</span>
-            <span className="card-number">0000</span>
-            <span className="card-number">0000</span>
+            <span className="card-number">1234</span>
+            <span className="card-number">3232</span>
+            <span className="card-number">3232</span>
+            <span className="card-number">3223</span>
           </div>
           <div className="name-row">
             <span className="owner-name">Felicia Leire</span>{" "}
