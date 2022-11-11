@@ -1,3 +1,6 @@
+body {
+  background-color: grey;
+}
 .container {
   width: 100%;
   min-height: 100vh;
@@ -64,7 +67,10 @@
   font-size: 0.8rem;
   width: 284px;
   height: 155px;
-  position: relative;
+  position: absolute;
+  /* top: 100px; */
+  left:0px;
+  bottom: 0px;
   display: flex;
   flex-direction: column;
   padding: 1.4em;
@@ -92,4 +98,43 @@
   justify-content: space-between;
   width: 100%;
   flex-grow: 0;
+}
+
+.card-back {
+  font-size: 0.8rem;
+  width: 284px;
+  height: 155px;
+  position: absolute;
+  color:white;
+  z-index: -10;
+  bottom: 86px;
+  left: 54px
+
+}
+
+.card-back-bg {
+  position: absolute;
+  z-index: -1;
+  width: 284px;
+  height: 155px;
+  top: 0px;
+  left: 0px;
+}
+
+.ccv {
+  position: absolute;
+  top: 68px;
+  right: 34px;
+}
+
+.cards-wrapper {
+  /* Need a better way to postion this responsively */
+  left: 48px; 
+  position: absolute;
+  width: 340px;
+  height: 280px;  
+  /* background-color: red; */
+  /* border: 1px solid red; */
+  /* top: 0; */
+  z-index: 1;
 }
