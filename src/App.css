@@ -45,41 +45,45 @@
 .logo {
   /* background-color: red; */
   /* position: absolute; */
-  width: 60px;
+  width: 56px;
   /* height: 40px; */
   /* flex-grow: 1; */
-  /* margin-bottom: auto; */
+  margin-bottom: auto;
 }
 
 .card-front-bg {
   position: absolute;
   z-index: -1;
-  width: 386px;
-  height: 212px;
+  width: 284px;
+  height: 155px;
   top: 0px;
   left: 0px;
 }
 
 .card-front {
-  width: 386px;
-  height: 212px;
+  font-size: 0.8rem;
+  width: 284px;
+  height: 155px;
   position: relative;
   display: flex;
   flex-direction: column;
-  /* padding: 16px; */
+  padding: 1.4em;
   color:white;
-  justify-content: space-between;
+  justify-content: space-between;  
+  /* background-color: red; */
 }
 
 .card-number-group {
   display: flex;
   flex-direction: row;  
   justify-content: flex-start;
+  flex-grow: 0;
 }
 
 .card-number {
   padding-right: 1ch;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.75em;
 }
 
 .name-row {
@@ -87,4 +91,5 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  flex-grow: 0;
 }
