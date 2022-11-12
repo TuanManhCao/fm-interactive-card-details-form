@@ -34,53 +34,60 @@ function App() {
           <img src={mobile_bg} className="mobile-image" />
           <img src={desktop_bg} className="desktop-image" />
         </div>
-        <div className="form-container">
-          <form action="/submit" method="post">
-            <div className="input-group form-name-group">
-              <label htmlFor="card-hodler-name">Cardholder name</label>
-              <input
-                type="text"
-                name=""
-                id="owner-name"
-                placeholder="e.g Jane Appleseed"
-              />
-            </div>
-            <div className="input-group  form-card-number-group">
-              <label htmlFor="card-number">Card Number</label>
-              <input
-                type="text"
-                name=""
-                id="owner-name"
-                placeholder="e.g 1234 1231 1231 3123"
-              />
-            </div>
-            <div className="lastrow">
-              <div className="input-group  form-exp-date-group">
-                <label htmlFor="expire-date">EXP. Date (MM/YY)</label>
-                <div className="form-exp-date-input">
+        <div className="parent-form-container">
+          <div className="form-container">
+            <form action="/submit" method="post">
+              <div className="input-group form-name-group">
+                <label htmlFor="card-hodler-name">Cardholder name</label>
+                <input
+                  type="text"
+                  name=""
+                  id="owner-name"
+                  placeholder="e.g Jane Appleseed"
+                />
+              </div>
+              <div className="input-group  form-card-number-group">
+                <label htmlFor="card-number">Card Number</label>
+                <input
+                  type="text"
+                  name=""
+                  id="owner-name"
+                  placeholder="e.g 1234 1231 1231 3123"
+                />
+              </div>
+              <div className="lastrow">
+                <div className="input-group  form-exp-date-group">
+                  <label htmlFor="expire-date">EXP. Date (MM/YY)</label>
+                  <div className="form-exp-date-input">
+                    <input
+                      type="text"
+                      name="month"
+                      id="month"
+                      placeholder="MM"
+                      className="date-input"
+                    />
+                    <input
+                      type="text"
+                      name="month"
+                      id="Year"
+                      placeholder="YY"
+                      className="date-input"
+                    />
+                  </div>
+                </div>
+                <div className="input-group form-cvc-group">
+                  <label htmlFor="CVC">CCV</label>
                   <input
                     type="text"
-                    name="month"
-                    id="month"
-                    placeholder="MM"
-                    className="date-input"
-                  />
-                  <input
-                    type="text"
-                    name="month"
-                    id="Year"
-                    placeholder="YY"
-                    className="date-input"
+                    name="CCV"
+                    id="ccv"
+                    placeholder="e.g 123"
                   />
                 </div>
               </div>
-              <div className="input-group form-cvc-group">
-                <label htmlFor="CVC">CCV</label>
-                <input type="text" name="CCV" id="ccv" placeholder="e.g 123" />
-              </div>
-            </div>
-            <input type="button" value="Confirm" className="submit-btn"/>
-          </form>
+              <input type="button" value="Confirm" className="submit-btn" />
+            </form>
+          </div>
         </div>
       </div>
     </>

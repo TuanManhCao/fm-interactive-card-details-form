@@ -22,8 +22,7 @@ body {
 }
 
 .form-container {
-  height: 100;
-  min-height: 400px;
+  width: 364;
   padding: 18px;
 }
 
@@ -39,11 +38,7 @@ body {
 
 /*  Card layout */
 .logo {
-  /* background-color: red; */
-  /* position: absolute; */
   width: 56px;
-  /* height: 40px; */
-  /* flex-grow: 1; */
   margin-bottom: auto;
 }
 
@@ -139,7 +134,14 @@ body {
   align-items: stretch;
 }
 
+.parent-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  min-height: calc(100vh - 300px);
+}
 .form-container {
+  margin-top: 45px;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -196,11 +198,11 @@ input[type="text"] {
   background-color: lightslategray;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1280px) {
   .container {
     width: 100%;
     flex-direction: row;
-    background-color: red;
+    /* background-color: red; */
     /* width: 375px; */
     margin: 0 auto;
     min-height: 100vh;
@@ -210,14 +212,22 @@ input[type="text"] {
     width: 33%;
   }
 
-  .form-container {
-    /* flex-basis: 0;
-    flex-grow: 2; */
+  .parent-form-container {
+    /* background-color: yellow; */
     width: 67%;
-    /* height: 100 ; */
-    /* min-height: 400px; */
-    /* padding: 18px; */
-    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    /* align-items: center; */
+    min-height: 100vh
+  }
+  .form-container {
+    font-size: 1em;
+    margin-top: 280px;
+    margin-right: 160px;
+    width: 400px;
+    height: 340px;
+    /* background-color: blue; */
   }
   .desktop-image {
     display: block;
