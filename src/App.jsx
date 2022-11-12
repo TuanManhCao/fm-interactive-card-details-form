@@ -76,7 +76,7 @@ function App() {
               </div>
               <div className="input-group form-cvc-group">
                 <label htmlFor="CVC">CCV</label>
-                <input type="text" name="CCV" id="ccv" />
+                <input type="text" name="CCV" id="ccv" placeholder="e.g 123" />
               </div>
             </div>
             <input type="button" value="Confirm" className="submit-btn"/>
