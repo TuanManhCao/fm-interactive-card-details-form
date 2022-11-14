@@ -1,3 +1,6 @@
+*, *::before, *::after { box-sizing: border-box;}
+
+
 body {
   /* background-color: grey; */
   background-color: var(--light-grayish-violet);
@@ -75,8 +78,7 @@ body {
 }
 
 .card-number {
-  padding-right: 1.5ch;
-  width: 4.6ch;
+  margin-right: 8px;
   letter-spacing: 1px;
   font-size: 1.25rem;
   margin-bottom: 0.75em;
@@ -267,8 +269,7 @@ input[type="text"] {
   }
 
   .card-number {
-    padding-right: 2ch;
-    width: 5ch;
+    margin-right: 10px;
     letter-spacing: 4px;
     font-size: 1.8rem;
     margin-bottom: 0.75em;

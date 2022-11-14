@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import "./App.css"
 import mobile_bg from "./assets/bg-main-mobile.png"
 import desktop_bg from "./assets/bg-main-desktop.png"
@@ -6,7 +6,29 @@ import card_front_bg from "./assets/bg-card-front.png"
 import card_back_bg from "./assets/bg-card-back.png"
 import card_logo from "./assets/card-logo.svg"
 
+function splitToNumberGroupOfFour(source) {
+
+  const paddedString = String(source + "0000000000000000").slice(0,16)
+
+  return paddedString.match(/.{1,4}/g)
+  
+}
+
 function App() {
+  const cardNumberInput = useRef(null);
+  const [cardNumbers, setCardNumbers] = useState(
+    splitToNumberGroupOfFour("0000000000000000")
+  )
+
+  function cardNumberOnChange(e) {
+    e.preventDefault();
+    const cardNumber = cardNumberInput.current.value
+    // console.log(JSON.stringify(cardNumber))
+    console.log(cardNumber)
+    setCardNumbers(splitToNumberGroupOfFour(cardNumber))
+    // setCardNumbers(splitToNumberGroupOfFour(cardNumber))
+  }
+
   return (
     <>
       <div className="cards-wrapper">
@@ -18,10 +40,10 @@ function App() {
           <img src={card_front_bg} alt="" className="card-front-bg" />
           <img src={card_logo} alt="" className="logo" />
           <div className="card-number-group">
-            <span className="card-number">1234</span>
-            <span className="card-number">3232</span>
-            <span className="card-number">3232</span>
-            <span className="card-number">3223</span>
+            <span className="card-number">{cardNumbers[0]}</span>
+            <span className="card-number">{cardNumbers[1]}</span>
+            <span className="card-number">{cardNumbers[2]}</span>
+            <span className="card-number">{cardNumbers[3]}</span>
           </div>
           <div className="name-row">
             <span className="owner-name">Felicia Leire</span>{" "}
@@ -40,10 +62,12 @@ function App() {
               <div className="input-group form-name-group">
                 <label htmlFor="card-hodler-name">Cardholder name</label>
                 <input
-                  type="text"
+                  type="tel"
                   name=""
-                  id="owner-name"
+                  id="owner-name2"
                   placeholder="e.g Jane Appleseed"
+                  // required
+                  // pattern="\d{1,16}"
                 />
               </div>
               <div className="input-group  form-card-number-group">
@@ -53,6 +77,8 @@ function App() {
                   name=""
                   id="owner-name"
                   placeholder="e.g 1234 1231 1231 3123"
+                  ref={cardNumberInput}
+                  onChange={cardNumberOnChange}
                 />
               </div>
               <div className="lastrow">
