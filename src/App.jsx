@@ -5,6 +5,7 @@ import desktop_bg from "./assets/bg-main-desktop.png"
 import card_front_bg from "./assets/bg-card-front.png"
 import card_back_bg from "./assets/bg-card-back.png"
 import card_logo from "./assets/card-logo.svg"
+import icon_completed from './assets/icon-complete.svg'
 
 function splitToNumberGroupOfFour(source) {
   const paddedString = String(source + "0000000000000000").slice(0, 16)
@@ -31,6 +32,7 @@ function App() {
   const [yearInputError, setyearInputError] = useState(null)
   const [ccvInputError, setCcvInputError] = useState(null)
   const [cardNumberErr, setCardNumberErr] = useState(null)
+  const [formCompleted, setFormCompleted] = useState(false)
 
   function cardNumberOnChange(e) {
     e.preventDefault()
@@ -60,43 +62,52 @@ function App() {
 
   function handleFormSubmision(e) {
     e.preventDefault()
+    var isComplete = true
     if (nameInput.current.value.length == 0) {
       setNameInputError("Name cannot be blank.")
+      isComplete = false
     } else {
       setNameInputError(null)
     }
 
     if (cardNumberInput.current.value.length == 0) {
       setCardNumberErr("Card number cannot be blank.")
+      isComplete = false
     } else {
-      const regex=/\d{16}/g
-      if (regex.test(cardNumberInput.current.value)) {
-        setCardNumberErr(null)
-      } else {
-        setCardNumberErr("Invalid card number format.")
-      }
+      const isValidCardNumber = /\d{16}/g.test(cardNumberInput.current.value)
+      setCardNumberErr(
+        !isValidCardNumber ? "Invalid card number format." : null
+      )
+      isComplete = isComplete && isValidCardNumber
     }
 
     if (monthInput.current.value.length == 0) {
       setMonthInputError("Cannot be blank.")
+      isComplete = false
     } else {
       const isValidMonth = /\d{2}/g.test(monthInput.current.value)
       setMonthInputError(!isValidMonth ? "Invalid format" : null)
+      isComplete = isComplete && isValidMonth
     }
 
     if (yearInput.current.value.length == 0) {
       setyearInputError("Cannot be blank.")
+      isComplete = false
     } else {
       const isValidYear = /\d{2}/g.test(yearInput.current.value)
       setyearInputError(!isValidYear ? "Invalid format" : null)
+      isComplete = isComplete && isValidYear
     }
 
     if (ccvInput.current.value.length == 0) {
       setCcvInputError("Cannot be blank.")
+      isComplete = false
     } else {
       const isValidCCV = /\d{3}/g.test(ccvInput.current.value)
-      setCcvInputError(!isValidCCV ? "Invalid format" : null )
+      setCcvInputError(!isValidCCV ? "Invalid format" : null)
+      isComplete = isComplete && isValidCCV
     }
+    setFormCompleted(isComplete)
   }
 
   return (
@@ -128,7 +139,19 @@ function App() {
           <img src={desktop_bg} className="desktop-image" />
         </div>
         <div className="parent-form-container">
-          <div className="form-container">
+          {formCompleted ? (
+            <>
+              <div className="form-completed">
+                <img src={icon_completed} alt="" />
+                <h1>Thank you!</h1>
+                <p>We've added your card details</p>
+                <a href="/" className="submit-btn"> Continue</a>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+          <div className={"form-container" + (formCompleted ? " hidden" : "")}>
             <form action="/submit" method="post">
               <div className="input-group form-name-group">
                 <label htmlFor="card-hodler-name">Cardholder name</label>
@@ -191,7 +214,9 @@ function App() {
                       onChange={dateChanged}
                     />
                   </div>
-                  <p className="error-message">{monthInputError || yearInputError}</p>
+                  <p className="error-message">
+                    {monthInputError || yearInputError}
+                  </p>
                 </div>
                 <div className="input-group form-cvc-group">
                   <label htmlFor="CVC">CCV</label>
