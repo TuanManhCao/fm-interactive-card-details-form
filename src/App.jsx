@@ -69,25 +69,33 @@ function App() {
     if (cardNumberInput.current.value.length == 0) {
       setCardNumberErr("Card number cannot be blank.")
     } else {
-      setCardNumberErr(null)
+      const regex=/\d{16}/g
+      if (regex.test(cardNumberInput.current.value)) {
+        setCardNumberErr(null)
+      } else {
+        setCardNumberErr("Invalid card number format.")
+      }
     }
 
     if (monthInput.current.value.length == 0) {
       setMonthInputError("Cannot be blank.")
     } else {
-      setMonthInputError(null)
+      const isValidMonth = /\d{2}/g.test(monthInput.current.value)
+      setMonthInputError(!isValidMonth ? "Invalid format" : null)
     }
 
     if (yearInput.current.value.length == 0) {
       setyearInputError("Cannot be blank.")
     } else {
-      setyearInputError(null)
+      const isValidYear = /\d{2}/g.test(yearInput.current.value)
+      setyearInputError(!isValidYear ? "Invalid format" : null)
     }
 
     if (ccvInput.current.value.length == 0) {
       setCcvInputError("Cannot be blank.")
     } else {
-      setCcvInputError(null)
+      const isValidCCV = /\d{3}/g.test(ccvInput.current.value)
+      setCcvInputError(!isValidCCV ? "Invalid format" : null )
     }
   }
 
