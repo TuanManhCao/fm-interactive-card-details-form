@@ -9,6 +9,7 @@ body {
   --light-grayish-violet: hsl(270, 3%, 87%);
   --dark-grayish-violet: hsl(279, 6%, 55%);
   --very-dark-violet: hsl(278, 68%, 11%);
+  --error-color:  hsl(0, 100%, 66%);
 }
 
 .container {
@@ -67,6 +68,7 @@ body {
   padding: 1.4em;
   color: white;
   justify-content: space-between;
+  text-transform: uppercase;
   /* background-color: red; */
 }
 
@@ -128,6 +130,14 @@ body {
 }
 
 /* Form layout */
+
+.error-message {
+  font-size: 0.8rem;
+  margin-top: 8px;
+  color:  hsl(0, 100%, 66%);
+  margin-bottom: 8px;
+}
+
 .input-group {
   display: flex;
   flex-direction: column;
@@ -166,6 +176,8 @@ body {
   width: 70px;
 }
 
+
+
 label {
   font-size: 0.8rem;
   margin-top: 1em;
@@ -177,11 +189,19 @@ input[type="text"]::placeholder {
   color: var(--light-grayish-violet);
 }
 
-input[type="text"] {
-  border: 1px solid var(--light-grayish-violet);
+input[type="text"] {  
   border-radius: 4px;
   height: 44px;
   padding-left: 12px;
+}
+
+input.normal {
+  border: 1px solid var(--light-grayish-violet);
+}
+
+input.invalid{
+  /* background-color: blue; */
+  border: 1px solid var(--error-color);
 }
 
 .submit-btn {
@@ -228,7 +248,7 @@ input[type="text"] {
     margin-top: 280px;
     margin-right: 160px;
     width: 400px;
-    height: 340px;
+    height: 360px;
     /* background-color: blue; */
   }
   .desktop-image {
