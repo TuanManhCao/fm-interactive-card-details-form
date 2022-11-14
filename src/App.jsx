@@ -16,6 +16,14 @@ function splitToNumberGroupOfFour(source) {
 
 function App() {
   const cardNumberInput = useRef(null);
+  const nameInput = useRef(null)
+  const monthInput = useRef(null)
+  const yearInput = useRef(null)
+  const ccvInput = useRef(null)
+
+  const [name, setName] = useState(null)
+  const [expiredDate, setExpiredDate] = useState("01/22")
+  const [ccvCode, setCcvCode] = useState(null)
   const [cardNumbers, setCardNumbers] = useState(
     splitToNumberGroupOfFour("0000000000000000")
   )
@@ -29,12 +37,29 @@ function App() {
     // setCardNumbers(splitToNumberGroupOfFour(cardNumber))
   }
 
+  function nameChanged(e) {
+    e.preventDefault()
+    setName(nameInput.current.value) 
+  }
+
+  function dateChanged(e){
+    e.preventDefault()
+    const month = monthInput.current.value ?? "01"
+    const year = yearInput.current.value ?? "22"
+    setExpiredDate(`${month}/${year}`)
+  }
+
+   function ccvChanged(e) {
+     e.preventDefault()
+     setCcvCode(ccvInput.current.value)
+   }
+
   return (
     <>
       <div className="cards-wrapper">
         <div className="card-back">
           <img src={card_back_bg} alt="" className="card-back-bg" />
-          <span className="ccv"> 123</span>
+          <span className="ccv"> {ccvCode}</span>
         </div>
         <div className="card-front">
           <img src={card_front_bg} alt="" className="card-front-bg" />
@@ -46,11 +71,12 @@ function App() {
             <span className="card-number">{cardNumbers[3]}</span>
           </div>
           <div className="name-row">
-            <span className="owner-name">Felicia Leire</span>{" "}
-            <span className="expire-date">09/22</span>
+            <span className="owner-name">{name}</span>{" "}
+            <span className="expire-date">{expiredDate}</span>
           </div>
         </div>
       </div>
+
       <div className="container">
         <div className="gradient-bg">
           <img src={mobile_bg} className="mobile-image" />
@@ -62,12 +88,13 @@ function App() {
               <div className="input-group form-name-group">
                 <label htmlFor="card-hodler-name">Cardholder name</label>
                 <input
-                  type="tel"
+                  type="text"
                   name=""
                   id="owner-name2"
                   placeholder="e.g Jane Appleseed"
-                  // required
-                  // pattern="\d{1,16}"
+                  ref={nameInput}
+                  onChange={nameChanged}
+                  maxLength={32}
                 />
               </div>
               <div className="input-group  form-card-number-group">
@@ -79,6 +106,7 @@ function App() {
                   placeholder="e.g 1234 1231 1231 3123"
                   ref={cardNumberInput}
                   onChange={cardNumberOnChange}
+                  maxLength={16}
                 />
               </div>
               <div className="lastrow">
@@ -91,6 +119,9 @@ function App() {
                       id="month"
                       placeholder="MM"
                       className="date-input"
+                      maxLength={2}
+                      ref={monthInput}
+                      onChange={dateChanged}
                     />
                     <input
                       type="text"
@@ -98,6 +129,9 @@ function App() {
                       id="Year"
                       placeholder="YY"
                       className="date-input"
+                      maxLength={2}
+                      ref={yearInput}
+                      onChange={dateChanged}
                     />
                   </div>
                 </div>
@@ -108,6 +142,9 @@ function App() {
                     name="CCV"
                     id="ccv"
                     placeholder="e.g 123"
+                    maxLength={3}
+                    ref={ccvInput}
+                    onChange={ccvChanged}
                   />
                 </div>
               </div>
