@@ -5,6 +5,8 @@ This is a solution to the [Product preview card component challenge on Frontend 
 
 ### The challenge
 
+![Desktop](images/desktop-design.jpg)
+
 Users should be able to:
 
 - View the optimal layout depending on their device's screen size
