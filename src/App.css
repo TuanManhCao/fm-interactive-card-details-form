@@ -18,7 +18,8 @@ body {
 .container {
   width: 375px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 600px;
+  max-height: 1000px;  
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -152,8 +153,8 @@ body {
 .parent-form-container {
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  min-height: calc(100vh - 300px);
+  /* justify-content: end; */
+  /* min-height: calc(100vh - 300px); */
 }
 .form-container {
   margin-top: 45px;
